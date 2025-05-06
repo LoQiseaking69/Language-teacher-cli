@@ -1,4 +1,5 @@
 # Language Teacher CLI
+___
 
 A multilingual language teacher CLI powered by [Typer](https://typer.tiangolo.com/), [Edge-TTS](https://github.com/rany2/edge-tts), and MyMemory translation API.
 
