@@ -4,7 +4,7 @@ Presents vocabulary words and asks the user to type the correct characters.
 Currently supports Mandarin Chinese (HSK levels 1–3).
 """
 
-from typing import Dict, List, Optional
+from typing import Any, Callable, Dict, List, Optional, Union
 
 import typer
 from rich.console import Console
@@ -22,9 +22,9 @@ def _normalize(text: str) -> str:
 
 def run_drill(
     words: List[Dict[str, str]],
-    speak_fn: Optional[object] = None,
+    speak_fn: Optional[Callable[[str, str], Any]] = None,
     voice: str = "zh-CN-XiaoxiaoNeural",
-) -> Dict[str, object]:
+) -> Dict[str, Union[int, List[Dict[str, str]]]]:
     """Run an interactive typing drill and return results.
 
     Args:

@@ -1,8 +1,11 @@
 """HSK vocabulary data for Mandarin Chinese typing practice.
 
-Contains vocabulary for HSK Levels 1–3 (modern HSK 3.0 standard),
-organized by level. Each entry includes simplified Chinese characters
-(hanzi), pinyin romanization, and English translation.
+Contains vocabulary for HSK Levels 1–3 based on the classic HSK standard
+(pre-2021), organized by level.  Each entry includes simplified Chinese
+characters (hanzi), pinyin romanization, and English translation.
+
+The vocabulary covers the core words tested in HSK levels 1 through 3
+and is suitable for building foundational Mandarin reading and typing skills.
 """
 
 import random
