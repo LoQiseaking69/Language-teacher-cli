@@ -18,5 +18,5 @@ def translate_text(text: str, target_lang: str = "zh-CN") -> str:
 
     translated = data["responseData"]["translatedText"]
     if translated.strip().lower() == text.strip().lower():
-        print(f"[!] Warning: translation may have failed (result equals input)")
+        print("[!] Warning: translation may have failed (result equals input)")
     return translated
