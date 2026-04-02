@@ -18,7 +18,7 @@ def log_entry(source: str, translated: str, lang: str, voice: str) -> None:
     }
     try:
         with open(HISTORY_PATH, "a") as f:
-            f.write(json.dumps(entry) + "\n")
+            print(json.dumps(entry), file=f)
     except OSError as e:
         print(f"[!] Could not write history: {e}")
 

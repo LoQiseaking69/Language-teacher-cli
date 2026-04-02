@@ -56,9 +56,7 @@ def test_show_history_displays_entries(tmp_path):
             f.write(json.dumps(e) + "\n")
 
     with patch("language_teacher.history.HISTORY_PATH", str(history_file)):
-        from io import StringIO
-        from unittest.mock import patch as mp
-        with mp("rich.console.Console.print") as mock_print:
+        with patch("rich.console.Console.print") as mock_print:
             show_history(n=20)
             mock_print.assert_called_once()
 
