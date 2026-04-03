@@ -2,7 +2,9 @@
 import typer
 
 from language_teacher.config import load_config, save_config
+from language_teacher.drill import run_drill
 from language_teacher.history import log_entry, show_history
+from language_teacher.hsk import AVAILABLE_LEVELS, get_random_words, word_count
 from language_teacher.pinyin_fallback import get_pinyin
 from language_teacher.translate import translate_text
 from language_teacher.tts import VOICE_MAP, list_voices, speak_text
@@ -54,6 +56,70 @@ def list_voices_cmd():
 @app.command()
 def history(n: int = typer.Option(20, help="Number of recent entries to show")):
     show_history(n)
+
+
+@app.command()
+def drill(
+    level: int = typer.Option(3, "--level", "-l", help="HSK level (1, 2, or 3)"),
+    count: int = typer.Option(10, "--count", "-c", help="Number of words per session"),
+    no_speak: bool = typer.Option(False, "--no-speak", help="Skip TTS playback"),
+    cumulative: bool = typer.Option(
+        True, "--cumulative/--level-only",
+        help="Include words from lower HSK levels",
+    ),
+):
+    """Practice typing Mandarin Chinese characters (HSK 1–3)."""
+    if level not in AVAILABLE_LEVELS:
+        typer.echo(
+            f"[!] Invalid HSK level {level}. Choose from: {AVAILABLE_LEVELS}",
+            err=True,
+        )
+        raise typer.Exit(code=1)
+
+    total_available = word_count(level, cumulative=cumulative)
+    actual_count = min(count, total_available)
+    words = get_random_words(level, actual_count, cumulative=cumulative)
+
+    voice = config.get("voice", VOICE_MAP.get("zh-CN", "zh-CN-XiaoxiaoNeural"))
+    speak_fn = None if no_speak else speak_text
+
+    run_drill(words, speak_fn=speak_fn, voice=voice)
+
+
+@app.command(name="hsk-info")
+def hsk_info(
+    level: int = typer.Option(3, "--level", "-l", help="HSK level (1, 2, or 3)"),
+):
+    """Show HSK vocabulary statistics and sample words."""
+    from rich.console import Console
+    from rich.table import Table
+
+    if level not in AVAILABLE_LEVELS:
+        typer.echo(
+            f"[!] Invalid HSK level {level}. Choose from: {AVAILABLE_LEVELS}",
+            err=True,
+        )
+        raise typer.Exit(code=1)
+
+    con = Console()
+    con.print(f"\n[bold cyan]HSK Level {level} Vocabulary Info[/bold cyan]\n")
+
+    table = Table(show_header=True, header_style="bold")
+    table.add_column("Level")
+    table.add_column("Words (this level)", justify="right")
+    table.add_column("Words (cumulative)", justify="right")
+
+    for lvl in AVAILABLE_LEVELS:
+        if lvl <= level:
+            this_lvl = word_count(lvl, cumulative=False)
+            cumul = word_count(lvl, cumulative=True)
+            table.add_row(f"HSK {lvl}", str(this_lvl), str(cumul))
+
+    con.print(table)
+    con.print(
+        f"\nUse [bold]language-teacher drill --level {level}[/bold] "
+        "to start a typing practice session.\n"
+    )
 
 
 if __name__ == "__main__":
