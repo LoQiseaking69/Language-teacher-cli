@@ -1,7 +1,7 @@
 """Interactive typing drill for language practice.
 
 Presents vocabulary words and asks the user to type the correct characters.
-Currently supports Mandarin Chinese (HSK levels 1–3).
+Supports Mandarin Chinese (HSK levels 1–6).
 """
 
 from typing import Any, Callable, Dict, List, Optional, Union
@@ -9,8 +9,6 @@ from typing import Any, Callable, Dict, List, Optional, Union
 import typer
 from rich.console import Console
 from rich.table import Table
-
-from language_teacher.hsk import get_random_words, word_count, AVAILABLE_LEVELS
 
 console = Console()
 
