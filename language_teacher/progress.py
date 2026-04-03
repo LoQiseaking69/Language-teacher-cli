@@ -56,7 +56,7 @@ def show_progress() -> None:
     total_correct = sum(1 for e in data.values() if e.get("correct", 0) > 0)
     total_mastered = sum(
         1 for e in data.values()
-        if e.get("attempts", 0) >= 3 and e.get("correct", 0) / e.get("attempts", 1) >= 0.8
+        if e.get("attempts", 0) >= 3 and e.get("correct", 0) / e["attempts"] >= 0.8
     )
 
     console.print(f"\n[bold]📊 HSK Learning Progress[/bold]")
@@ -79,7 +79,7 @@ def show_progress() -> None:
             for h in band_hanzi
             if h in data
             and data[h].get("attempts", 0) >= 3
-            and data[h].get("correct", 0) / data[h].get("attempts", 1) >= 0.8
+            and data[h].get("correct", 0) / data[h]["attempts"] >= 0.8
         )
         table.add_row(band_name, str(attempted), str(len(band_hanzi)), str(mastered))
 

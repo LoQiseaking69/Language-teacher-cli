@@ -283,7 +283,7 @@ HSK_VOCAB = [
     # =========================================================================
 
     # --- Band 2: Nouns (Body Parts) ---
-    {"hanzi": "头", "pinyin": "tou2", "english": "head", "band": 2, "category": "noun"},
+    {"hanzi": "头", "pinyin": "tou2", "english": "head; MW for large animals", "band": 2, "category": "noun"},
     {"hanzi": "眼睛", "pinyin": "yan3 jing1", "english": "eye", "band": 2, "category": "noun"},
     {"hanzi": "耳朵", "pinyin": "er3 duo5", "english": "ear", "band": 2, "category": "noun"},
     {"hanzi": "鼻子", "pinyin": "bi2 zi5", "english": "nose", "band": 2, "category": "noun"},
@@ -409,7 +409,7 @@ HSK_VOCAB = [
     {"hanzi": "放", "pinyin": "fang4", "english": "to put; to place; to release", "band": 2, "category": "verb"},
     {"hanzi": "拿", "pinyin": "na2", "english": "to take; to hold", "band": 2, "category": "verb"},
     {"hanzi": "画", "pinyin": "hua4", "english": "to draw; to paint", "band": 2, "category": "verb"},
-    {"hanzi": "种", "pinyin": "zhong4", "english": "to plant; to grow", "band": 2, "category": "verb"},
+    {"hanzi": "种", "pinyin": "zhong4", "english": "to plant; to grow; (zhong3) kind; type", "band": 2, "category": "verb"},
 
     # --- Band 2: Adjectives ---
     {"hanzi": "干净", "pinyin": "gan1 jing4", "english": "clean", "band": 2, "category": "adjective"},
@@ -447,7 +447,7 @@ HSK_VOCAB = [
     {"hanzi": "突然", "pinyin": "tu1 ran2", "english": "suddenly", "band": 2, "category": "adverb"},
     {"hanzi": "马上", "pinyin": "ma3 shang4", "english": "immediately; right away", "band": 2, "category": "adverb"},
     {"hanzi": "一起", "pinyin": "yi1 qi3", "english": "together", "band": 2, "category": "adverb"},
-    {"hanzi": "只", "pinyin": "zhi3", "english": "only; just", "band": 2, "category": "adverb"},
+    {"hanzi": "只", "pinyin": "zhi3", "english": "only; just; (zhi1) MW for animals", "band": 2, "category": "adverb"},
     {"hanzi": "可能", "pinyin": "ke3 neng2", "english": "maybe; possibly", "band": 2, "category": "adverb"},
     {"hanzi": "非常", "pinyin": "fei1 chang2", "english": "very; extremely", "band": 2, "category": "adverb"},
     {"hanzi": "几乎", "pinyin": "ji1 hu1", "english": "almost; nearly", "band": 2, "category": "adverb"},
@@ -461,11 +461,11 @@ HSK_VOCAB = [
     {"hanzi": "双", "pinyin": "shuang1", "english": "pair; measure word for pairs", "band": 2, "category": "measure_word"},
     {"hanzi": "张", "pinyin": "zhang1", "english": "measure word for flat things", "band": 2, "category": "measure_word"},
     {"hanzi": "把", "pinyin": "ba3", "english": "measure word for things with handles", "band": 2, "category": "measure_word"},
-    {"hanzi": "只", "pinyin": "zhi1", "english": "measure word for animals", "band": 2, "category": "measure_word"},
+    {"hanzi": "座", "pinyin": "zuo4", "english": "measure word for buildings/mountains", "band": 2, "category": "measure_word"},
     {"hanzi": "辆", "pinyin": "liang4", "english": "measure word for vehicles", "band": 2, "category": "measure_word"},
     {"hanzi": "位", "pinyin": "wei4", "english": "measure word for people (polite)", "band": 2, "category": "measure_word"},
     {"hanzi": "节", "pinyin": "jie2", "english": "measure word for classes/sections", "band": 2, "category": "measure_word"},
-    {"hanzi": "种", "pinyin": "zhong3", "english": "kind; type; measure word for types", "band": 2, "category": "measure_word"},
+    {"hanzi": "套", "pinyin": "tao4", "english": "measure word for sets", "band": 2, "category": "measure_word"},
     {"hanzi": "次", "pinyin": "ci4", "english": "time (occurrence); measure word", "band": 2, "category": "measure_word"},
     {"hanzi": "段", "pinyin": "duan4", "english": "section; measure word for paragraphs", "band": 2, "category": "measure_word"},
 
