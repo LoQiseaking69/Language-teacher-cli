@@ -60,15 +60,19 @@ def history(n: int = typer.Option(20, help="Number of recent entries to show")):
 
 @app.command()
 def drill(
-    level: int = typer.Option(3, "--level", "-l", help="HSK level (1, 2, or 3)"),
-    count: int = typer.Option(10, "--count", "-c", help="Number of words per session"),
+    level: int = typer.Option(3, "--level", "-l", help="HSK level (1–6)"),
+    count: int = typer.Option(10, "--count", "-c", help="Number of words per session (min 1)"),
     no_speak: bool = typer.Option(False, "--no-speak", help="Skip TTS playback"),
     cumulative: bool = typer.Option(
         True, "--cumulative/--level-only",
         help="Include words from lower HSK levels",
     ),
 ):
-    """Practice typing Mandarin Chinese characters (HSK 1–3)."""
+    """Practice typing Mandarin Chinese characters (HSK 1–6)."""
+    if count < 1:
+        typer.echo("[!] --count must be at least 1.", err=True)
+        raise typer.Exit(code=1)
+
     if level not in AVAILABLE_LEVELS:
         typer.echo(
             f"[!] Invalid HSK level {level}. Choose from: {AVAILABLE_LEVELS}",
@@ -88,7 +92,7 @@ def drill(
 
 @app.command(name="hsk-info")
 def hsk_info(
-    level: int = typer.Option(3, "--level", "-l", help="HSK level (1, 2, or 3)"),
+    level: int = typer.Option(3, "--level", "-l", help="HSK level (1–6)"),
 ):
     """Show HSK vocabulary statistics and sample words."""
     from rich.console import Console
